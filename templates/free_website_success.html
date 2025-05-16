@@ -1,0 +1,149 @@
+{% load static %} <!-- Keep for potential future static assets -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Successful - GOtech Solutions</title>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #28a745; /* Green for success */
+            --text-dark: #343a40;
+            --text-light: #f8f9fa;
+            --text-muted: #6c757d;
+            --white-color: #ffffff;
+            --border-radius: 5px;
+            --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif; /* Or your site's font */
+            margin: 0;
+            padding: 0;
+            background-color: #e9ecef; /* A light grey background for the page */
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure footer sticks to bottom if content is short */
+        }
+
+        .navbar { /* Simple Navbar Style */
+            background-color: var(--text-dark);
+            padding: 1rem 2rem;
+            color: var(--white-color);
+            text-align: center; /* Or flex for logo + nav items */
+        }
+        .navbar a {
+            color: var(--white-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        main {
+            flex-grow: 1; /* Allows main content to take available space */
+            display: flex;
+            align-items: center; /* Vertically center the success message container */
+            justify-content: center; /* Horizontally center */
+        }
+
+        .success-section {
+            padding: 40px 20px;
+            text-align: center;
+            width: 100%; /* Take full width for centering purposes */
+        }
+
+        .success-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white-color);
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .success-container h2 {
+            color: var(--secondary-color); /* Green for success */
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .success-container .icon {
+            font-size: 4rem; /* For a checkmark icon if you add one */
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .success-container p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        .success-container .muted-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+            border: none;
+        }
+        .cta-button:hover {
+            background-color: #0056b3; /* Darker shade of primary */
+        }
+
+        .footer { /* Simple Footer Style */
+            background-color: var(--text-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: auto; /* Pushes footer to bottom if content is short */
+        }
+
+    </style>
+    <!-- You can add Font Awesome here if you want a checkmark icon -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+</head>
+<body>
+
+    <header class="navbar">
+        <span class="logo">GOtech Solutions</span>
+        <div>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'free_website_campaign' %}">Free Website Campaign</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="success-section">
+            <div class="success-container">
+                <!-- Optional: Add a success icon like a checkmark -->
+                <!-- <div class="icon"><i class="fas fa-check-circle"></i></div> -->
+                <h2>Thank You!</h2>
+                <p>Your application for a free website has been successfully submitted.</p>
+                <p class="muted-text">We will review all applications and contact you if your project is selected for one of the 50 free websites.</p>
+                <a href="{% url 'home' %}" class="cta-button">Return to Homepage</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© {% now "Y" %} GOtech Solutions. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

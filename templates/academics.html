@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics - ZPSS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header styles */
+        header {
+            /*background-color: #343a40; /*  Remove this solid background */
+            background: linear-gradient(to bottom, #f0f8ff, #f0f8ff); /* Gradient background */
+            color: black; /* Change to a dark colour */
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #007bff;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        .container {
+            padding: 2rem;
+            flex: 1;
+        }
+
+        h1, h2 {
+            color: #007bff;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        img {
+            max-width: 80%;
+            height: 80;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style: disc; /* Use disc for unordered lists */
+            padding-left: 20px;  /* Add some indentation */
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ZPSS - Your School</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'academics' %}">Academics</a></li>
+                <li><a href="{% url 'admissions' %}">admissions</a></li>
+                
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Academics</h1>
+
+        <section id="foundation-stage">
+            <h2>Foundation Stage</h2>
+            <h3>Our Foundation Stage Courses</h3>
+            <p>To evoke the interest of learning, our Foundation classes have been involved in extra-curricular activities which made a lot of significance in their long journey of education.</p>
+
+            <div class="foundation-classes">
+                <h3>Foundation Classes - 1 & 2</h3>
+                <img src="{% static 'images/cr8.jpeg' %}" alt="Foundation Class Image"> <!-- Replace with your image -->
+                <p>Ms. Hellen & Ms. Grace</p>
+                <p>The ending of this term marks the beginning of primary education to our nursery students who have learnt all the basics of learning in speech, writing, letters, basic numbers, knowing colours and importantly introducing themselves to any audience they are required to do so. These are but some basics which we have infused in the early learning of the foundation class. To evoke the interest of learning, our Foundation classes have been involved in extra-curricular activities which made a lot of significance in their long journey of education.</p>
+            </div>
+        </section>
+
+        <section id="igcse-stage">
+            <h2>IGCSE Stage</h2>
+            <h3>Our Secondary IGCSE Courses</h3>
+            <p>Higher class learning prepares the student to face the open world in Science, Commerce and Professional careers. Knowledge in ICT, Robotics, Languages and critical thinking is what senior students need to be equiped with as they prepare for real life experiences.</p>
+
+            <div class="senior-secondary">
+                <h3>FORM 04 & 05 / IGCSE</h3>
+                <img src="{% static 'images/ig8.jpg' %}" alt="IGCSE Image"> <!-- Replace with your image -->
+                <p>Senior Secondary</p>
+                <p>The IGSCE provides a robust, vibrant and up to date school education that will engender excellence in every sphere of human endeavour. The IGCSE is committed to provide quality education to promote intellectual, social and cultural appreciation among its learners. It works towards evolving a learning process and environment, which empowers the students to become global leaders in the emerging knowledge society. The Board advocates Continuous and Comprehensive Evaluation with an emphasis on holistic development of learners world wide. The Board commits itself to providing a stress-free and enjoyable learning environment that will develop competent, confident and enterprising citizens who will promote peace, global unity and upholding of human values.</p>
+
+                <h4>What makes us unique:</h4>
+                <ul>
+                    <li>Comprehensive reporting on individual achievement</li>
+                    <li>Educational field trips and school presentations</li>
+                    <li>Individual attention in a small-class setting</li>
+                    <li>Learning program with after-school care</li>
+                    <li>Opportunities to carry out scientific investigations</li>
+                    <li>Positive learning environment for your child</li>
+                </ul>
+
+                <h4>A Range of our Subjects</h4>
+                <p>In years 10 and 11 you will also study a range of subjects. Some subjects are compulsory: Mathematics, English, & ICT but others are for a student/parent to decide.</p>
+                <ul>
+                    <li>English (as a Second Language)</li>
+                    <li>Mathematics</li>
+                    <li>ICT</li>
+                    <li>Physics</li>
+                    <li>Chemistry</li>
+                    <li>Biology</li>
+                    <li>History (Optional)</li>
+                    <li>Accounting (Optional)</li>
+                    <li>Geography (Optional)</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        © 2025 ZPSS. All rights reserved.
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

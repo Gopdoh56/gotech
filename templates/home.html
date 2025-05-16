@@ -1,0 +1,343 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOtech Solutions - Your Partner in Digital Transformation</title>
+    <!-- Font Awesome for icons (optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* CSS directly embedded */
+        :root {
+            --primary-color: #007bff; /* A nice blue */
+            --secondary-color: #333; /* Dark grey for text */
+            --light-bg: #f8f9fa; /* Light background for sections */
+            --white-color: #ffffff;
+            --text-color: #555;
+            --heading-font: 'Arial', sans-serif; /* Or a more modern font */
+            --body-font: 'Georgia', serif; /* Or a clean sans-serif like Open Sans */
+        }
+
+        body {
+            font-family: var(--body-font);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            scroll-behavior: smooth; /* For smooth scrolling on nav clicks */
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden; /* Clears floats */
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--secondary-color);
+            color: var(--white-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            font-family: var(--heading-font);
+        }
+
+        header ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+        header ul li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        header a {
+            color: var(--white-color);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        header a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--primary-color); 
+            background-image: url('../static/images/screenshot-railsware.com-2020.08.jpg');
+            background-size: cover;
+            background-position: center;
+            
+            color: var(--white-color);
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-family: var(--heading-font);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white-color);
+            color: var(--primary-color);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: 2px solid var(--white-color);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--white-color);
+        }
+
+        /* General Section Styling */
+        section {
+            padding: 60px 0;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            font-family: var(--heading-font);
+        }
+
+        .about-us {
+            background: var(--light-bg);
+        }
+        .about-us p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+
+        /* Services Section */
+        .services {
+            background: var(--white-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-card i { /* Font Awesome Icon */
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+            font-family: var(--heading-font);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--light-bg);
+        }
+        .contact-info {
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        .contact-info i {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px; /* Give some space before footer */
+        }
+
+        /* Responsive adjustments (basic) */
+        @media (max-width: 768px) {
+            header nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            header .logo {
+                margin-bottom: 10px;
+            }
+            header ul li {
+                display: block;
+                margin: 10px 0;
+                text-align: center;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">GOtech Solutions</div>
+            <a href="{% url 'free_website_campaign' %}" class="cta-button">Apply for a Free Website!</a>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <h1>Welcome to GOtech Solutions</h1>
+                <p>Your Partner in Digital Transformation</p>
+                <p>We specialize in delivering cutting-edge technology solutions, computer engineering, web development, and app development to propel your business into the future.</p>
+                <a href="{% url 'free_website_campaign' %}" class="cta-button">Apply for a Free Website!</a>
+                <a href="#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </section>
+
+        <section id="about" class="about-us">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>
+                    At GOtech Solutions, we are passionate about technology and its power to transform businesses.
+                    Our team of experienced engineers and developers is dedicated to providing innovative and reliable solutions
+                    tailored to your unique needs. We believe in collaboration, excellence, and driving success for our clients.
+                </p>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Technology Solutions</h3>
+                        <p>Innovative tech strategies to drive your business forward.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Computer Engineering</h3>
+                        <p>Expert hardware and software engineering services.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-globe"></i>
+                        <h3>Web Development</h3>
+                        <p>Modern, responsive websites tailored to your needs.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>App Development</h3>
+                        <p>Custom mobile and web applications that engage users.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>Ready to start your next project or have a question? We'd love to hear from you.</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:info@gotech.solutions">info@gotech.solutions</a></p>
+                    <p><i class="fas fa-phone"></i> Phone: <a href="tel:+1234567890">+1 (234) 567-890</a> (Example)</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Address: 123 Tech Street, Innovation City, TX 75001 (Example)</p>
+                </div>
+                <!-- You can add a contact form here later -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="currentYear"></span> GOtech Solutions. All Rights Reserved.</p>
+            <!-- Add social media links here if you have them -->
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to update the year dynamically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

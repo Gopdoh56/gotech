@@ -1,0 +1,302 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions - ZPSS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        
+        /* General styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header styles */
+        header {
+            /*background-color: #343a40; /*  Remove this solid background */
+            background: linear-gradient(to bottom, #f0f8ff, #f0f8ff); /* Gradient background */
+            color: black; /* Change to a dark colour */
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #007bff;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        .container {
+            padding: 2rem;
+            flex: 1;
+        }
+
+        h1, h2 {
+            color: #007bff;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .fee-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        .fee-table th, .fee-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .fee-table th {
+            background-color: #f2f2f2;
+        }
+
+        .download-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ZPSS - Your School</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'academics' %}">Academics</a></li>
+                <li><a href="{% url 'admissions' %}">Admissions</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Admissions</h1>
+
+        <section id="admission-policy">
+            <h2>Admission Policy</h2>
+            <p>Children will be permitted to attend the school only after the completion of the formalities.</p>
+            <p>Application for admission should be made on the prescribed application form accompanied by relevant certificates and photo of the child.</p>
+            <p>Parents/Guardians shall make sure of the date of birth of their children/wards, before they are registered in the school register. The date of birth once entered cannot be altered.</p>
+            <p>Admission fees must be paid at the time of admission.</p>
+            <p>Progress Report and Certificate of good conduct shall be produced by the Candidate at the time of admission issued by the previous school.</p>
+            <p>Application for Transfer Certificate should be submitted well in advance and they will be issued only when all the dues fees have been cleared and school accounts have been duly settled.</p>
+
+            <a href="{% static 'downloads/admission_form.pdf' %}" class="download-button" download>Download Admission Form</a>
+        </section>
+
+        <section id="fee-structure">
+            <h2>School Fee Structure</h2>
+            <p>School Fee's academic Year 2024/25</p>
+
+            <table class="fee-table">
+                <thead>
+                    <tr>
+                        <th>Class Group</th>
+                        <th>Term Fees</th>
+                        <th>Books Fees (Annual)</th>
+                        <th>Examination Fees (Annual)</th>
+                        <th>Total</th>
+                        <th>Second & Third Term Fee</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Reception Classes (Foundation Stage 2 & Foundation Stage 1)</td>
+                        <td>MK 340,000.00</td>
+                        <td>MK 100,000.00</td>
+                        <td>-</td>
+                        <td>MK 440,000.00</td>
+                        <td>MK 340,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>Primary Classes (Year 1 up to Year 6)</td>
+                        <td>MK 525,000.00</td>
+                        <td>MK 200,000.00</td>
+                        <td>MK 50,000.00</td>
+                        <td>MK 775,000.00</td>
+                        <td>MK 525,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>Secondary Classes (Year 7, 8 & 9)</td>
+                        <td>MK 700,000.00</td>
+                        <td>MK 250,000.00</td>
+                        <td>MK 75,000.00</td>
+                        <td>MK 1,025,000.00</td>
+                        <td>MK 700,000.00</td>
+                    </tr>
+                    <tr>
+                        <td>IGCSE (Year 10 & 11)</td>
+                        <td>MK 800,000.00</td>
+                        <td>MK 450,000.00</td>
+                        <td>MK 100,000.00</td>
+                        <td>MK 1,350,000.00</td>
+                        <td>MK 800,000.00</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Note: application and new admission Fee – MK25,000</p>
+            <p>School Bank Details:</p>
+            <p>Name of the account: ZOMBA PRIVATE PRIMARY SCHOOL</p>
+            <p>Account number: 1093487</p>
+            <p>Name of the Bank: National Bank</p>
+            <p>Branch: ZOMBA</p>
+            <p>Note: Deposit slips should be brought to the school accounts office for entry and proof.</p>
+        </section>
+
+        <section id="school-uniform">
+            <h2>School Uniform</h2>
+            <p>School Uniform academic Year 2022/23</p>
+            <p>Our school is complete with our dressing and outlook. The school uniform dwells on a mixture of two colours. Sky Blue and Navy Blue completed with a deep blue jersey and with a finish-off of black shoes. All white is used in Sports as the sports gear. Strictness on uniform binds the students of our school as one and separates them from others with a very unique identity.</p>
+
+            <h3>UNIFORM PRICE LIST</h3>
+            <table class="fee-table">
+                <thead>
+                    <tr>
+                        <th>S.no</th>
+                        <th>Uniform Size</th>
+                        <th>Class Group</th>
+                        <th>Uniform Details</th>
+                        <th>Cost / price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Small size</td>
+                        <td>Foundation classes</td>
+                        <td>1 shirt, 1 trouser/ 1 skirt, 1 pair of socks</td>
+                        <td>18,000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Medium size</td>
+                        <td>Primary classes</td>
+                        <td>1 shirt, 1 trouser/ 1 skirt, 1 pair of socks</td>
+                        <td>22,000</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Large size</td>
+                        <td>Secondary classes</td>
+                        <td>1 shirt, 1 trouser/ 1 skirt, 1 pair of socks</td>
+                        <td>26,000</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Jersey Small size</td>
+                        <td>1 no</td>
+                        <td>8,000</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Jersey Medium size</td>
+                        <td>1 no</td>
+                        <td>10,000</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Jersey Large size</td>
+                        <td>1 no</td>
+                        <td>12,000</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Leggings Black color</td>
+                        <td>1 no</td>
+                        <td>6,000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Note: The school shall not be responsible for the quality & Price of the uniform. Parents should check with the supplier before buying.</p>
+            <p>From:</p>
+            <p>Mr. Edward Moffat</p>
+            <p>Bursar's Office</p>
+            <p>+265 994437230</p>
+            <p>ZPPS School</p>
+        </section>
+    </div>
+
+    <footer>
+        © 2025 ZPSS. All rights reserved.
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

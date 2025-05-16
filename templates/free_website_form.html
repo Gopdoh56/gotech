@@ -1,0 +1,449 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title|default:"Apply for a Free Website" }} - GOtech Solutions</title>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #28a745; /* Green for success */
+            --danger-color: #dc3545;  /* Red for errors */
+            --warning-color: #ffc107; /* Yellow for warnings */
+            --info-color: #17a2b8;    /* Teal for info */
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-muted: #6c757d;
+            --white-color: #ffffff;
+            --border-color: #ced4da;
+            --border-radius: 0.375rem; /* Slightly more Bootstrap-like */
+            --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            --box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            --font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-sans-serif);
+            margin: 0;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            background-color: var(--dark-color);
+            padding: 0.75rem 1.5rem;
+            color: var(--white-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--box-shadow-sm);
+        }
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--white-color);
+            text-decoration: none;
+        }
+        .navbar-nav a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            margin-left: 1rem;
+            padding: 0.5rem 0;
+            transition: color 0.15s ease-in-out;
+        }
+        .navbar-nav a:hover, .navbar-nav a.active {
+            color: var(--white-color);
+        }
+
+        /* --- Main Content & Container --- */
+        main {
+            padding: 2rem 1rem; /* Add padding for smaller screens */
+        }
+        .form-container-wrapper { /* For centering the form container */
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+        .form-container {
+            background: var(--white-color);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            font-size: 2rem;
+            font-weight: 500;
+        }
+        .form-container .campaign-description {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        .form-container .spots-remaining {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            padding: 0.75rem;
+            border-radius: var(--border-radius);
+        }
+        .spots-remaining.available { color: var(--secondary-color); background-color: #e9f5e9; border: 1px solid var(--secondary-color);}
+        .spots-remaining.filled { color: var(--danger-color); background-color: #fdecea; border: 1px solid var(--danger-color); }
+
+        /* --- Messages --- */
+        .messages-container {
+            margin-bottom: 1.5rem;
+        }
+        .alert {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: var(--border-radius);
+            font-size: 0.95rem;
+        }
+        .alert-success { color: #0f5132; background-color: #d1e7dd; border-color: #badbcc; }
+        .alert-danger { color: #842029; background-color: #f8d7da; border-color: #f5c2c7; }
+        .alert-info { color: #055160; background-color: #cff4fc; border-color: #b6effb; }
+
+        /* --- Form Elements --- */
+        fieldset {
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: var(--border-radius);
+        }
+        legend {
+            font-weight: 600;
+            padding: 0 0.5rem;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem; /* Added for spacing */
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-group label, .checkbox-group-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-color);
+            font-size: 0.9rem;
+        }
+        .form-control { /* Common class for text inputs, textareas, selects */
+            display: block;
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--dark-color);
+            background-color: var(--white-color);
+            background-clip: padding-box;
+            border: 1px solid var(--border-color);
+            appearance: none; /* For select styling */
+            border-radius: var(--border-radius);
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        .form-control:focus {
+            border-color: #86b7fe; /* Lighter blue for focus */
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+        textarea.form-control {
+            min-height: calc(1.5em + 1rem + 2px); /* Default textarea height */
+        }
+
+        .checkbox-option {
+            display: flex; /* Align checkbox and label nicely */
+            align-items: center;
+            margin-bottom: 0.75rem;
+            position: relative; /* For custom checkbox styling (optional) */
+        }
+        .checkbox-option input[type="checkbox"] {
+            width: 1.25em;
+            height: 1.25em;
+            margin-right: 0.5rem;
+            flex-shrink: 0; /* Prevent checkbox from shrinking */
+            /* Add more custom checkbox styles here if desired */
+        }
+        .checkbox-option label { /* Label for checkbox */
+            font-weight: normal;
+            margin-bottom: 0; /* Override default label margin */
+            font-size: 0.95rem;
+            color: var(--dark-color);
+        }
+
+        .help-text {
+            display: block;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+            font-size: 0.875em;
+        }
+        .error-message { /* For Django form field errors */
+            color: var(--danger-color);
+            font-size: 0.875em;
+            margin-top: 0.25rem;
+            display: block; /* Ensure it takes its own line */
+        }
+        .form-text { /* General help text */
+             font-size: .875em;
+             color: var(--text-muted);
+        }
+
+
+        /* --- Other Specify Field (JavaScript Toggled) --- */
+        .other-specify-field {
+            display: none; /* Hidden by default */
+            margin-top: 0.5rem;
+            padding-left: 1.75rem; /* Indent it under the "Other" checkbox */
+        }
+
+
+        .submit-button {
+            display: block; /* Make it block for full width */
+            width: 100%;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-align: center;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+        .submit-button:hover {
+            background-color: #0056b3; /* Darker shade of primary */
+        }
+        .submit-button:active {
+            transform: scale(0.98);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--dark-color);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 1.5rem 1rem;
+            margin-top: 3rem;
+        }
+
+        /* Utility classes */
+        .mt-1 { margin-top: 0.25rem !important; }
+        .mb-1 { margin-bottom: 0.25rem !important; }
+        /* ... add more as needed ... */
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .navbar-nav {
+                margin-top: 0.5rem;
+            }
+            .navbar-nav a {
+                margin-left: 0;
+                display: block;
+            }
+            .form-container h2 {
+                font-size: 1.75rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="{% url 'home' %}" class="logo">GOtech Solutions</a>
+        <nav class="navbar-nav">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'free_website_campaign' %}" class="active">Free Website Campaign</a>
+            <!-- Add other nav links -->
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container-wrapper">
+            <div class="form-container">
+                <h2>{{ page_title|default:"Apply for a Free Website!" }}</h2>
+                <p class="campaign-description">{{ campaign_description|default:"Fill out the form below to apply for our free website campaign." }}</p>
+
+                {% if remaining_spots > 0 %}
+                    <p class="spots-remaining available">
+                        Hurry! Only {{ remaining_spots }} free website spots remaining!
+                    </p>
+                {% else %}
+                    <p class="spots-remaining filled">
+                        Thank you for your interest! All 50 spots for the free website campaign have been filled.
+                    </p>
+                {% endif %}
+
+                {% if messages %}
+                    <div class="messages-container">
+                        {% for message in messages %}
+                            <div class="alert alert-{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}" role="alert">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <form method="POST" action="{% url 'free_website_campaign' %}" id="freeWebsiteForm">
+                    {% csrf_token %}
+
+                    <fieldset>
+                        <legend>Your Information</legend>
+                        <div class="form-group"> {{ form.full_name.label_tag }} {{ form.full_name }} <span class="error-message">{{ form.full_name.errors|join:", " }}</span></div>
+                        <div class="form-group"> {{ form.business_name.label_tag }} {{ form.business_name }} <span class="error-message">{{ form.business_name.errors|join:", " }}</span></div>
+                        <div class="form-group"> {{ form.email.label_tag }} {{ form.email }} <span class="error-message">{{ form.email.errors|join:", " }}</span></div>
+                        <div class="form-group"> {{ form.phone_number.label_tag }} {{ form.phone_number }} <span class="error-message">{{ form.phone_number.errors|join:", " }}</span></div>
+                        <div class="form-group"> {{ form.industry.label_tag }} {{ form.industry }} <span class="error-message">{{ form.industry.errors|join:", " }}</span></div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>About Your Business/Organization</legend>
+                        <div class="form-group"> {{ form.business_description.label_tag }} {{ form.business_description }} <span class="error-message">{{ form.business_description.errors|join:", " }}</span></div>
+                        <div class="form-group"> {{ form.services_offered.label_tag }} {{ form.services_offered }} <span class="error-message">{{ form.services_offered.errors|join:", " }}</span></div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Why do you want a website? <small class="form-text">(Select all that apply)</small></legend>
+                        <div class="checkbox-option">{{ form.reason_online_presence }} <label for="{{ form.reason_online_presence.id_for_label }}">{{ form.reason_online_presence.label }}</label></div>
+                        <div class="checkbox-option">{{ form.reason_wider_audience }} <label for="{{ form.reason_wider_audience.id_for_label }}">{{ form.reason_wider_audience.label }}</label></div>
+                        <div class="checkbox-option">{{ form.reason_leads_sales }} <label for="{{ form.reason_leads_sales.id_for_label }}">{{ form.reason_leads_sales.label }}</label></div>
+                        <div class="checkbox-option">{{ form.reason_provide_info }} <label for="{{ form.reason_provide_info.id_for_label }}">{{ form.reason_provide_info.label }}</label></div>
+                        <div class="checkbox-option">{{ form.reason_brand_awareness }} <label for="{{ form.reason_brand_awareness.id_for_label }}">{{ form.reason_brand_awareness.label }}</label></div>
+                        <div class="checkbox-option">{{ form.reason_showcase_products }} <label for="{{ form.reason_showcase_products.id_for_label }}">{{ form.reason_showcase_products.label }}</label></div>
+                        
+                        <!-- "Other" checkbox and specify field -->
+                        <div class="checkbox-option">
+                            <input type="checkbox" name="{{ form.reason_other.name }}_trigger" id="id_reason_other_trigger">
+                            <label for="id_reason_other_trigger">Other</label>
+                        </div>
+                        <div class="form-group other-specify-field" id="other_reason_specify_wrapper">
+                            {{ form.reason_other.label_tag }}
+                            {{ form.reason_other }}
+                            <span class="error-message">{{ form.reason_other.errors|join:", " }}</span>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Website Goals</legend>
+                        <div class="form-group">
+                            {{ form.main_goal_for_website.label_tag }}
+                            {% if form.main_goal_for_website.help_text %}<small class="help-text">{{ form.main_goal_for_website.help_text }}</small>{% endif %}
+                            {{ form.main_goal_for_website }}
+                            <span class="error-message">{{ form.main_goal_for_website.errors|join:", " }}</span>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Branding & Content Readiness</legend>
+                        <div class="checkbox-option">{{ form.has_logo }} <label for="{{ form.has_logo.id_for_label }}">{{ form.has_logo.label }}</label></div>
+                        <div class="checkbox-option">{{ form.has_brand_colors_fonts }} <label for="{{ form.has_brand_colors_fonts.id_for_label }}">{{ form.has_brand_colors_fonts.label }}</label></div>
+                        <div class="checkbox-option">{{ form.will_provide_content }} <label for="{{ form.will_provide_content.id_for_label }}">{{ form.will_provide_content.label }}</label></div>
+                    </fieldset>
+
+                     <fieldset>
+                        <legend>Feedback & Collaboration</legend>
+                        <div class="checkbox-option">{{ form.willing_to_provide_testimonial }} <label for="{{ form.willing_to_provide_testimonial.id_for_label }}">{{ form.willing_to_provide_testimonial.label }}</label></div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Existing Online Presence & Insights</legend>
+                        <div class="form-group"> {{ form.existing_website_url.label_tag }} {{ form.existing_website_url }} <span class="error-message">{{ form.existing_website_url.errors|join:", " }}</span></div>
+                        <div class="form-group"> {{ form.social_media_links.label_tag }} {{ form.social_media_links }} <span class="error-message">{{ form.social_media_links.errors|join:", " }}</span></div>
+                        <div class="form-group"> {{ form.target_audience_description.label_tag }} {{ form.target_audience_description }} <span class="error-message">{{ form.target_audience_description.errors|join:", " }}</span></div>
+                        <div class="form-group"> {{ form.key_competitors.label_tag }} {{ form.key_competitors }} <span class="error-message">{{ form.key_competitors.errors|join:", " }}</span></div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Anything Else?</legend>
+                        <div class="form-group"> {{ form.additional_comments.label_tag }} {{ form.additional_comments }} <span class="error-message">{{ form.additional_comments.errors|join:", " }}</span></div>
+                    </fieldset>
+
+                    <button type="submit" class="submit-button">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© {% now "Y" %} GOtech Solutions. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Apply 'form-control' class to all relevant input types if not already applied by widgets
+            const form = document.getElementById('freeWebsiteForm');
+            if (form) {
+                const inputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="url"], input[type="tel"], input[type="number"], textarea, select');
+                inputs.forEach(function(input) {
+                    if (!input.classList.contains('form-control')) {
+                        input.classList.add('form-control');
+                    }
+                });
+            }
+
+            // JavaScript for "Other" specify field toggle
+            const otherReasonCheckbox = document.getElementById('id_reason_other_trigger'); // The trigger checkbox
+            const otherReasonSpecifyWrapper = document.getElementById('other_reason_specify_wrapper');
+            const otherReasonActualField = document.querySelector('[name="{{ form.reason_other.name }}"]'); // The actual text input
+
+            if (otherReasonCheckbox && otherReasonSpecifyWrapper && otherReasonActualField) {
+                // Initial state based on if the text field has a value (e.g., on form error reload)
+                if (otherReasonActualField.value.trim() !== '') {
+                    otherReasonCheckbox.checked = true;
+                    otherReasonSpecifyWrapper.style.display = 'block';
+                } else {
+                     otherReasonSpecifyWrapper.style.display = 'none';
+                }
+
+
+                otherReasonCheckbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        otherReasonSpecifyWrapper.style.display = 'block';
+                        otherReasonActualField.focus();
+                    } else {
+                        otherReasonSpecifyWrapper.style.display = 'none';
+                        otherReasonActualField.value = ''; // Clear the value if unchecked
+                    }
+                });
+            }
+
+            // Simple form validation feedback (optional, Django handles server-side)
+            // You can add more sophisticated client-side validation if needed.
+            // For example, highlighting fields with errors if Django re-renders the form.
+            const errorMessages = form.querySelectorAll('.error-message');
+            errorMessages.forEach(function(errorEl) {
+                if (errorEl.textContent.trim() !== '') {
+                    const fieldWrapper = errorEl.closest('.form-group');
+                    if (fieldWrapper) {
+                        const inputField = fieldWrapper.querySelector('.form-control, input[type="checkbox"]');
+                        if (inputField) {
+                            // You could add a class like 'is-invalid' for styling
+                            // inputField.classList.add('is-invalid');
+                        }
+                    }
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ZPSS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* General styles for the About Us page */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0; /* Remove default body margin */
+            display: flex; /* Enable Flexbox */
+            flex-direction: column; /* Stack header, content, and footer */
+            min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
+        }
+
+        /* Header styles */
+        header {
+            /*background-color: #343a40; /*  Remove this solid background */
+            background: linear-gradient(to bottom, #f0f8ff, #f0f8ff); /* Gradient background */
+            color: black; /* Change to a dark colour */
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center; /* Center the links */
+            gap: 1rem;  /* space the nav links out */
+        }
+
+        nav a {
+            color: black(0, 0, 0);
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #007bff;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto; /* Push the footer to the bottom */
+        }
+
+        /* Main content container */
+        .container {
+            padding: 2rem;
+            flex: 1; /* Allow the container to grow and take up remaining space */
+        }
+
+        h1, h2 , h3 {
+            color: #007bff; /* Primary color */
+            margin-bottom: 1.5rem;
+        }
+
+        .message {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: #fff;
+            border-radius: 0.25rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .code-of-conduct {
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        .code-of-conduct h3 {
+            color: #28a745; /* Secondary color */
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h3>ZPSS - Your School</h3>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li> <!-- Link to your main page -->
+                <li><a href="{% url 'academics' %}">academics</a></li>
+                <li><a href="{% url 'admissions' %}">admissions</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>About Us</h1>
+
+        <section id="mission-vision">
+            <h2>Mission and Vision</h2>
+            <div class="mission message">
+                <h3>Mission</h3>
+                <p>We, at Zomba Private Primary & Secondary International School aim to become a Leading & Innovative School of Zomba, bridging the gap between the school education, higher education and the industry.</p>
+                <p>We are on a mission to be one of the most sought after schools in the country by 2025 and emerge as a school of Research, Innovation, Knowledge and its Application to the real needs of the Global World.</p>
+                <p>ZPPSS does not discriminate in employment or the provision of educational services on the basis of race, color, religion, age, gender, national origin, disability, citizenship status, veteran status or any other characteristic protected by federal, state or local law.</p>
+            </div>
+            <div class="vision message">
+                <h3>Vision</h3>
+                <img src="{% static 'images/s1.jpg' %}" alt="Vision Image"> <!-- Replace with your actual image -->
+                <p>Our quest is multi task and it takes fulfillment of different goals to: “MAKE THE INSTITUTION A WORLD CLASS WITH WORLD CLASS PERFORMANCE”. This entails putting in place set standards which will align the institution to world class institutions qualitatively and productively.</p>
+            </div>
+        </section>
+
+        <section id="chairman-message">
+            <h2>Chairman's Message</h2>
+            <div class="chairman message">
+                <h3>Mr. MOHAMMED ZUBER MOTANI, Chairman</h3>
+                <p>Our aim is that our students achieve highest academic standards. But this is only one aspect of our school. We actively encourage the process of joyful discovery that is central to meaningful and responsible learning. We have a team of dedicated teachers who are experts in their subjects and they facilitate very high academic expectations of their learners and care deeply about the well-being of each student. We pride ourselves on our happy and nurturing environment which enables every student to achieve their best.</p>
+        </div>
+        </section>
+
+        <section id="principal-message">
+            <h2>Principal's Message</h2>
+            <div class="principal message">
+                <h3>Mr. Rachakonda Balaraju (Mr. Raj), Principal</h3>
+                <img src="{% static 'images/p.jpg' %}" alt="Principal Image"> <!-- Replace with your actual image -->
+                <p>I am happy to announce that ZPPS School is an accredited Cambridge International Centre. We completely follow the Cambridge Curriculum from Foundation to IGCSE classes. We believe that education should be about developing a real thirst for learning. ZPPSS has a long standing reputation for doing its very best for each individual student, by underpinning an exciting and ambitious academic program and a wide range of extra-curricular activities. Words, pictures and the school ecosystem speak volumes about the learning air that flows in ZPPS School. Our school offers outstanding academic, sporting and extracurricular opportunities. Come and see the learners at work and play, really enjoying their time. Speak to them of their success and failures and the lessons these have taught them. Hear about the way children are cared for and nurtured. This is the essence of Zomba Private Primary and Secondary School and it sets us apart from other schools. This is a place where children learn how to treat others the way they themselves would like to be treated, where they learn to grow into well-mannered and balanced young men and women, where they learn to both work and play with a smile on their face. Zomba Private Primary and Secondary is inclusive in the way that we cater for and accommodate children with diverse interests, abilities and talents, while being exclusive in our provision for those who really want to excel either academically, on the sports pitches, drama, art, computing or wherever their strengths may lie. Above all, we strive for every one of our learners to be happy. Happy children, who want to come to school, will eventually find something to latch on to and throw their energies into. Happy children will always thrive and succeed at ZPPS School.</p>
+            </div>
+        </section>
+
+        <section id="code-of-conduct">
+            <h2>Code of Conduct</h2>
+            <div class="code-of-conduct">
+                <h3>School Rules</h3>
+                <ul>
+                    <li><strong>Punctuality & Regularity:</strong> All students must arrive fifteen minutes before the school bell i.e. at 7:15 a.m. the school bell rings at 7:30 a.m. Every student is expected to bring school diary to school every day. It is obligatory for the students to attend every class as per their Time-Table.</li>
+                    <li>Taking half day is impermissible. A student may be allowed to leave early, only at the discretion of the principal if the parents come personally to take him/her.</li>
+                    <li><strong>Cleanliness & Hygiene:</strong> All students must adhere to the dress code of the school. Neat and tidy school uniform should be worn with belt, well-polished shoes with proper socks. A presentable turn out is expected of every student which includes a proper haircut and short nails. Students are discouraged to wear any jewellery, expensive wrist watches and any cosmetics whatsoever. Students are to refrain from bringing any sharp objects to school. Students should take pride in keeping the school premises clean.</li>
+                    <li><strong>Discipline:</strong> Observance of the school rules by each student is mandatory. Every student must endeavour to keep high standard of the school by maintaining the school discipline. Students are expected to be courteous, polite and helpful to teachers and peers. Students are expected to be polite towards the non-teaching staff of the school. Students who use offensive language, bully and hurt or cause injury to the other students are liable to be penalized. A student involved in any incident even outside the school which brings discredit to the institution either because of unpleasant nature or invites criminal or legal action by the police or court will be dismissed from the school without any further enquiry.</li>
+                    <li><strong>Maintenance of Decorum:</strong> Students are expected to move in corridors in a disciplined manner. They will walk in a line and maintain silence and distance. During co-curricular activities students are expected to go to the respective places maintaining perfect order. Refrain from borrowing or lending of money and exchange of articles. Chewing bubble gum, spitting, defacing furniture, writing, marking on the walls and misuse of smart boards will lead to strict disciplinary action. Students are not to carry mobiles/electronic gadgets to school. In case of any such requirements, written prior permission should be taken by the parents and the gadget should be handed over to the class teacher on arrival to the school.</li>
+                    <li><strong>Responsibility:</strong> Each child is expected to take full responsibility as we expect our students to exhibit exemplary behaviour and conduct themselves as brand ambassadors of the school. We feel that good manners are the foundations of making life meaningful and graceful. Keep abreast of the class syllabus to perform satisfactorily in Class Tests and Examinations. Get all the class and home assignments checked on time. Seek the assistance and guidance of teachers whenever required. To take full care of the school property. Those found guilty of damaging school property will be severely dealt with.</li>
+                    <li><strong>Safety and Security:</strong> Safety and security of our students is our foremost concern and priority. Visitors are requested to enter by the main gate, sign-in and sign-out in the register kept for this purpose at the Bursar's office. Visitors and parents are strictly not allowed to visit the class rooms or any other area in the school. For any queries kindly contact the Office Front Help Desk.</li>
+                    <li><strong>Integrity and Sensitivity:</strong> As the end goal of education is to help an individual become a better human being, each student is expected to act by a value system and the upright in his/her dealings. Students are expected to be fair and not resort to under means like cheating in exams, copying the work of others etc., Students are expected to be sensitive to the unspoken needs of the constituents of the environment and safeguard them in every possible way.</li>
+                </ul>
+            </div>
+            <div class="code-of-conduct">
+                <h3>Discipline Code A:</h3>
+                <p>The following acts and conduct on the part of the student will amount to misconduct.</p>
+                <ul>
+                    <li>Misbehaviour towards teacher or any other employee of the school.</li>
+                    <li>Intentional disturbance of classes.</li>
+                    <li>Absence from classes without the permission of the teacher/ Principal.</li>
+                    <li>Bullying/ intimidating others.</li>
+                    <li>Eve-teasing/ misbehaviour towards girl-students.</li>
+                    <li>Damaging/ disfiguring school property.</li>
+                    <li>Propagating a strike/ disruption of class.</li>
+                    <li>Indulging in physical violence in any manner.</li>
+                    <li>Disobeying lawful orders of the Teacher/ Principal.</li>
+                    <li>Bringing unauthorised people/ articles/ instruments.</li>
+                    <li>Theft/ pilferage of school/ students property.</li>
+                    <li>Any behaviour unbecoming of a student.</li>
+                    <li>When students move along the corridors and when changing class, they must maintain silence and walk in single line keeping to the left. Students are expected to speak only in ENGLISH during school hours.</li>
+                </ul>
+            </div>
+            <div class="code-of-conduct">
+                <h3>Discipline Code B:</h3>
+                <p>In case of misconduct, school shall take action as per observation, which may involve:</p>
+                <ul>
+                    <li>Oral warning to the student.</li>
+                    <li>Written warnings.</li>
+                    <li>Suspension of one day from class/ school/ period after five written warnings.</li>
+                    <li>Final written warnings in case of no improvement.</li>
+                    <li>Suspension of one week.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        © 2025 ZPSS. All rights reserved.
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
