@@ -65,9 +65,9 @@ TEMPLATES = [
 ]
 
 
-
-
 WSGI_APPLICATION = 'zpp.wsgi.application'
+
+
 
 
 # Database
